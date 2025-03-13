@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
 import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,7 +15,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider appearance={{ baseTheme: "dark" }}>
+    <ClerkProvider appearance={{ baseTheme: dark }}>
       <html lang="en" suppressHydrationWarning>
         <body className={`${inter.className}`}>
           <ThemeProvider
