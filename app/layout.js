@@ -5,7 +5,7 @@ import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
 import { ClerkProvider } from "@clerk/nextjs";
 
-const inter = Inter({subsets: ["latin"]})
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "SENSAI - AI Career Coach",
@@ -16,9 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
-        <body
-          className={`${inter.className}`}
-        >
+        <body className={`${inter.className}`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="dark"
