@@ -11,7 +11,7 @@ export async function updateUser(data) {
     throw new Error("Unauthorized");
   }
 
-  const user = db.user.findUnique({
+  const user = await db.user.findUnique({
     where: {
       clerkUserId: userId,
     },
@@ -37,9 +37,9 @@ export async function updateUser(data) {
               industry: data.industry,
               salaryRanges: [],
               growthRate: 0,
-              demandLevel: "Medium",
+              demandLevel: "MEDIUM",
               topSkills: [],
-              marketOutlook: "Neutral",
+              marketOutlook: "NEUTRAL",
               keyTrends: [],
               recommendedSkills: [],
               nextUpdate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
@@ -47,6 +47,7 @@ export async function updateUser(data) {
           });
         }
 
+        console.log("User is ", user);
         // update the user
         const updatedUser = await tx.user.update({
           where: {
@@ -66,7 +67,7 @@ export async function updateUser(data) {
       { timeout: 10000 }
     );
 
-    return result.user;
+    return { success: true, ...result };
   } catch (error) {
     console.error("Error updating user and industry:", error.message);
     throw new Error("Failed to update profile");
